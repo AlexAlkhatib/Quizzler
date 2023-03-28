@@ -58,7 +58,7 @@ public class CategoryActivity extends AppCompatActivity {
                 Toast.makeText(this, R.string.about_toast, Toast.LENGTH_LONG).show();
                 return (true);
             case R.id.exit:
-                finish();
+                finishAffinity();
                 return (true); }
         return true;
     }
