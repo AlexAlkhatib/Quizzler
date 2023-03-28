@@ -6,4 +6,9 @@
     <string name="select_category_level">Select Category</string>
     <string name="select_difficulty_level">Select Difficulty Level</string>
     <string name="select_quantity_level">Select Question Quantity</string>
+    <string name="add">Add</string>
+    <string name="reset">Reset</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+    <string name="about_toast">Alex&amp;Joey</string>
 </resources>
