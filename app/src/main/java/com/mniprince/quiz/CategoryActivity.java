@@ -41,9 +41,8 @@ public class CategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_category);
         checkInternetConnection();
-        Toolbar tb = findViewById(R.id.ToolBar);
-        setSupportActionBar(tb);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -79,8 +78,8 @@ public class CategoryActivity extends AppCompatActivity {
                     NetworkInfo.State state = info.getState();
                     if (state == NetworkInfo.State.CONNECTED) {
                         setContentView(R.layout.activity_category);
-
-
+                        Toolbar tb = findViewById(R.id.ToolBar);
+                        setSupportActionBar(tb);
                         try {
                             initcat();
 
