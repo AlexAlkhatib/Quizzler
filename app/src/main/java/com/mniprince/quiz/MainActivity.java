@@ -155,60 +155,29 @@ public class MainActivity extends AppCompatActivity {
                         button[i].setBackground(getDrawable(R.drawable.bgbtn));
 
                         button[i].setOnClickListener(new View.OnClickListener() {
+                            public void actionBouton(int i)
+                            {
+                                button[i-1].setBackground(getDrawable(R.drawable.selectbtn));
+                                try {
+                                    if (Objects.equals(strArray[i-1], quizModels.get(q).getCorrectAnswer())) {
+                                        score = score + 5;
+                                        Toast.makeText(getApplicationContext(), "Correct answer", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "Wrong answer. The good one is:\n"+quizModels.get(q).getCorrectAnswer(), Toast.LENGTH_LONG).show();
+                                    }
+                                } catch (Exception w) {
+
+                                }
+                            }
                             @Override
                             public void onClick(View view) {
                                 if (isClick == 0) {
                                     isClick = 1;
                                     switch (view.getId()) {
-                                        case R.id.btn1:
-                                            button[0].setBackground(getDrawable(R.drawable.selectbtn));
-                                            try {
-                                                if (Objects.equals(strArray[0], quizModels.get(q).getCorrectAnswer())) {
-                                                    score = score + 5;
-
-                                                } else {
-                                                    score = score;
-                                                }
-                                            } catch (Exception w) {
-
-                                            }
-                                            break;
-                                        case R.id.btn2:
-                                            button[1].setBackground(getDrawable(R.drawable.selectbtn));
-                                            try {
-                                                if (Objects.equals(strArray[1], quizModels.get(q).getCorrectAnswer())) {
-                                                    score = score + 5;
-                                                } else {
-                                                    score = score;
-                                                }
-                                            } catch (Exception w) {
-
-                                            }
-                                            break;
-                                        case R.id.btn3:
-                                            button[2].setBackground(getDrawable(R.drawable.selectbtn));
-                                            try {
-                                                if (Objects.equals(strArray[2], quizModels.get(q).getCorrectAnswer())) {
-                                                    score = score + 5;
-                                                } else {
-                                                    score = score;
-                                                }
-                                            } catch (Exception w) {
-
-                                            }
-                                            break;
-                                        case R.id.btn4:
-                                            button[3].setBackground(getDrawable(R.drawable.selectbtn));
-                                            try {
-                                                if (Objects.equals(strArray[3], quizModels.get(q).getCorrectAnswer())) {
-                                                    score = score + 5;
-                                                } else {
-                                                    score = score;
-                                                }
-                                            } catch (Exception w) {
-
-                                            }
-                                            break;
+                                        case R.id.btn1: actionBouton(1); break;
+                                        case R.id.btn2: actionBouton(2); break;
+                                        case R.id.btn3: actionBouton(3); break;
+                                        case R.id.btn4: actionBouton(4); break;
                                     }
                                     if (q < quizModels.size() - 1) {
                                         q = q + 1;
