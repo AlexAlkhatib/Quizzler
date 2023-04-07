@@ -1,7 +1,9 @@
 package com.mniprince.quiz;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,6 +13,9 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -19,6 +24,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CategoryActivity extends AppCompatActivity {
@@ -35,9 +41,26 @@ public class CategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_category);
         checkInternetConnection();
+    }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.about:
+                Toast.makeText(this, R.string.about_toast, Toast.LENGTH_LONG).show();
+                return (true);
+            case R.id.exit:
+                finishAffinity();
+                return (true); }
+        return true;
     }
 
     private void checkInternetConnection() {
@@ -55,8 +78,8 @@ public class CategoryActivity extends AppCompatActivity {
                     NetworkInfo.State state = info.getState();
                     if (state == NetworkInfo.State.CONNECTED) {
                         setContentView(R.layout.activity_category);
-
-
+                        Toolbar tb = findViewById(R.id.ToolBar);
+                        setSupportActionBar(tb);
                         try {
                             initcat();
 
