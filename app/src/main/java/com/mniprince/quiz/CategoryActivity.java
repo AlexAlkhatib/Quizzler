@@ -44,7 +44,12 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category);
         checkInternetConnection();
     }
-
+    /*
+    La méthode onCreateOptionsMenu(Menu menu) est responsable de la création du menu d'options dans l'activité principale.
+    Elle fait appel à la méthode getMenuInflater() pour créer une instance du MenuInflater, qui permet d'ajouter des éléments au menu en utilisant un fichier XML.
+    Ensuite, elle utilise la méthode inflate() pour ajouter les éléments définis dans le fichier menu_main.xml au menu.
+    Enfin, elle retourne true pour indiquer que la création du menu est terminée avec succès.
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         MenuInflater inflater = getMenuInflater();
@@ -52,6 +57,12 @@ public class CategoryActivity extends AppCompatActivity {
         return true;
     }
 
+    /*
+    La méthode onOptionsItemSelected est responsable de la gestion des événements du menu de l'application.
+    Lorsque l'utilisateur sélectionne un élément de menu, la méthode est appelée avec l'objet MenuItem correspondant en tant que paramètre.
+    Dans cette méthode, la méthode getItemId() est utilisée pour récupérer l'identifiant de l'élément de menu sélectionné.
+    Si l'élément de menu sélectionné est "about", un Toast affichant un message d'information sur l'application est créé et affiché. Si l'élément de menu sélectionné est "exit", la méthode finishAffinity() est appelée pour fermer toutes les activités associées à l'application et quitter l'application. La valeur de retour true indique que l'événement de menu a été géré avec succès.
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.about:
@@ -63,6 +74,7 @@ public class CategoryActivity extends AppCompatActivity {
         return true;
     }
 
+    //Pareil que dans la classe MainActivity
     private void checkInternetConnection() {
         if (br == null) {
 
@@ -105,7 +117,13 @@ public class CategoryActivity extends AppCompatActivity {
             registerReceiver((BroadcastReceiver) br, intentFilter);
         }
     }
-
+    /*
+    La méthode initcat() est responsable de l'initialisation des éléments de l'interface utilisateur de la CategoryActivity.
+    Elle définit les adaptateurs pour les spinners de catégorie et de limite, et ajoute des écouteurs d'événements pour sélectionner les valeurs de ces spinners.
+    Elle initialise également le bouton de démarrage et définit son écouteur de clic. Lorsque le bouton est cliqué, la méthode vérifie si une difficulté a été sélectionnée.
+    Si c'est le cas, elle crée un Intent pour aller à l'activité MainActivity et y transmet les valeurs sélectionnées pour la catégorie, la limite et la difficulté.
+    Enfin, elle démarre l'activité MainActivity et ferme la CategoryActivity actuelle. Si aucune difficulté n'a été sélectionnée, elle affiche un Toast indiquant à l'utilisateur de sélectionner un niveau de difficulté.
+     */
     private void initcat() {
         radioGroup = findViewById(R.id.radioGroup);
         start = findViewById(R.id.start);
@@ -162,6 +180,12 @@ public class CategoryActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    La méthode checkButton() est appelée lorsqu'un bouton radio est sélectionné dans le groupe radioGroup.
+    Elle récupère l'identifiant de l'élément de bouton radio sélectionné à l'aide de la méthode getCheckedRadioButtonId() et l'assigne à la variable radioid.
+    Ensuite, elle trouve la vue RadioButton correspondante à partir de l'ID radioid à l'aide de la méthode findViewById() et l'assigne à la variable radioButton.
+    Enfin, elle récupère le texte du bouton radio sélectionné à l'aide de la méthode getText() et l'assigne à la variable difficulty.
+     */
     public void checkButtion(View v) {
         int radioid = radioGroup.getCheckedRadioButtonId();
         radioButton = findViewById(radioid);
@@ -169,6 +193,12 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
 
+    /*
+    La méthode onBackPressed() est utilisée pour détecter quand l'utilisateur appuie sur le bouton "retour" de son appareil.
+    Dans cette méthode, il y a une condition qui vérifie si l'utilisateur a appuyé sur le bouton deux fois dans un délai de 2 secondes pour confirmer s'il souhaite quitter l'application.
+    Si l'utilisateur confirme, l'activité CategoryActivity est fermée et l'application est ramenée à l'écran d'accueil du système d'exploitation.
+    Sinon, un message "Appuyez à nouveau pour quitter" est affiché à l'utilisateur.
+     */
     @Override
     public void onBackPressed() {
         if (backpresstime + 2000 > System.currentTimeMillis()) {
