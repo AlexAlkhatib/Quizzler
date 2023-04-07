@@ -5,6 +5,21 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/*
+Cette classe est une classe modèle (ou POJO) pour stocker les données d'une question de quiz. Elle utilise l'annotation Gson @SerializedName pour faire correspondre les noms des propriétés JSON aux noms des propriétés de la classe.
+
+Les propriétés de la classe sont :
+
+category: la catégorie du quiz
+id: l'identifiant unique du quiz
+correctAnswer: la réponse correcte du quiz
+incorrectAnswers: une liste des réponses incorrectes du quiz
+question: la question du quiz
+tags: une liste de tags associés au quiz
+type: le type de quiz (par exemple, vrai/faux ou choix multiple)
+difficulty: la difficulté du quiz (par exemple, facile, moyen ou difficile)
+regions: une liste de régions associées au quiz (par exemple, Amérique du Nord, Europe, etc.)
+ */
 
 public class QuizModel {
     @SerializedName("category")
