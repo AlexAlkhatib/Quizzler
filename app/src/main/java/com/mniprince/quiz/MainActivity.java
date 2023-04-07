@@ -53,11 +53,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /* La fonction checkInternetConnection() permet de vérifier si l'appareil a une connexion Internet active.
+     Elle utilise le ConnectivityManager pour obtenir l'état de la connexion réseau de l'appareil.
+     Si une connexion Internet est disponible, la fonction renvoie true, sinon elle renvoie false.
+      Cette fonction est utilisée dans la méthode onCreate() pour vérifier si l'appareil a une connexion Internet active avant de charger la page Web dans le WebView.
+     */
     private void checkInternetConnection() {
         if (br == null) {
 
             br = new BroadcastReceiver() {
 
+                /*
+                La méthode onReceive(Context context, Intent intent) est une méthode d'écouteur d'intent de diffusion.
+                 Elle est appelée chaque fois qu'un nouvel intent de diffusion est reçu par l'application.
+                 la méthode est utilisée pour détecter les changements d'état de la connexion Internet.
+                 Elle vérifie si l'état de la connexion a changé depuis la dernière fois que l'application a vérifié l'état de la connexion,
+                 et elle met à jour l'état de la connexion dans l'interface utilisateur de l'application.
+                 */
                 @Override
                 public void onReceive(Context context, Intent intent) {
 
@@ -90,12 +102,24 @@ public class MainActivity extends AppCompatActivity {
 
             };
 
+            /*
+            IntentFilter est utilisé pour filtrer les intents à recevoir, dans ce cas, l'intent de CONNECTIVITY_ACTION qui est diffusé lorsque la connexion réseau change.
+            registerReceiver() est utilisé pour enregistrer le BroadcastReceiver avec le système pour qu'il puisse recevoir des diffusions d'intent correspondant à l'IntentFilter spécifié.
+             */
             final IntentFilter intentFilter = new IntentFilter();
             intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
             registerReceiver((BroadcastReceiver) br, intentFilter);
         }
     }
 
+    /*
+    La méthode init() sert à initialiser les variables et les éléments d'interface utilisateur nécessaires pour démarrer le quiz.
+    Elle commence par récupérer les informations de l'intent qui a lancé l'activité, telles que la catégorie, la difficulté et la limite de questions.
+    elle appelle getResponse() pour récupérer les questions du serveur en fonction des paramètres passés.
+    la méthode initialise les différents éléments d'interface utilisateur tels que les TextViews pour afficher la question, le score et l'état du quiz.
+    Elle récupère également les références des boutons pour soumettre et redémarrer le quiz, ainsi que les dispositions pour afficher la vue de score et la vue principale.
+    Enfin, la méthode initialise la variable de score à zéro, prête à être incrémentée au fur et à mesure que l'utilisateur répond aux questions.
+     */
     public void init() {
         try {
             Intent intent = getIntent();
@@ -116,7 +140,14 @@ public class MainActivity extends AppCompatActivity {
         scorelayout = findViewById(R.id.scorelayout);
     }
 
-
+    /*
+    La méthode getResponse est responsable de faire un appel API en utilisant Retrofit pour obtenir les questions et réponses du quiz en fonction de la catégorie,
+    de la difficulté et du nombre de question spécifié.
+    Elle définitle texte de la question de quiz et de l'état, et randomise l'ordre des options de réponse.
+    Enfin, elle définit les écouteurs de clic pour chaque bouton de réponse et vérifie la réponse sélectionnée. Si la réponse sélectionnée est correcte, elle ajoute 5 points au score.
+    S'il y a encore des questions à répondre, la question suivante est chargée.
+    Si toutes les questions ont été répondues, le bouton de soumission est affiché et la méthode submitbtn() est appelée.
+     */
     private void getResponse(String key, String key1, String key2) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://the-trivia-api.com/")
@@ -225,8 +256,10 @@ public class MainActivity extends AppCompatActivity {
                         });
 
                     }
-                    //Toast to get correct answer Test purpose
-//                      Toast.makeText(MainActivity.this, quizModels.get(q).getCorrectAnswer(), Toast.LENGTH_SHORT).show();
+
+
+                    //Afficher la bonne réponse dans un toast, c'était prévu dans une base de données mais on était limité par le temps
+                    Toast.makeText(MainActivity.this, quizModels.get(q).getCorrectAnswer(), Toast.LENGTH_SHORT).show();
 
                 } catch (Exception ignored) {
                 }
@@ -241,6 +274,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    La méthode submitbtn() est appelée lorsque l'utilisateur a répondu à toutes les questions du quiz et a cliqué sur le bouton "Submit".
+    Elle est responsable de masquer le layout principal où se trouvent les questions et les réponses, d'afficher le layout du score où l'utilisateur peut voir son score et le nombre total de questions,
+    puis d'appeler la méthode restart() qui permet de redémarrer le quiz en réinitialisant le score et le numéro de question.
+     */
     private void submitbtn() {
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -255,6 +293,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    La méthode restart() est responsable de définir l'écouteur de clic pour le bouton "Redémarrer".
+    Lorsque ce bouton est cliqué, elle crée un Intent pour revenir à la CategoryActivity et lance cette activité.
+    Elle appelle également la méthode finish() pour fermer l'activité MainActivity actuelle.
+     */
     private void restart() {
 
         restart.setOnClickListener(new View.OnClickListener() {
