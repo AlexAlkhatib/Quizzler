@@ -190,6 +190,8 @@ public class MainActivity extends AppCompatActivity {
                         button[i].setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                //Afficher la bonne réponse dans un toast, c'était prévu dans une base de données mais on était limité dans le temps
+                                Toast.makeText(MainActivity.this, quizModels.get(q).getCorrectAnswer(), Toast.LENGTH_SHORT).show();
                                 if (isClick == 0) {
                                     isClick = 1;
                                     switch (view.getId()) {
@@ -260,8 +262,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
 
-                    //Afficher la bonne réponse dans un toast, c'était prévu dans une base de données mais on était limité dans le temps
-                    Toast.makeText(MainActivity.this, quizModels.get(q).getCorrectAnswer(), Toast.LENGTH_SHORT).show();
+
 
                 } catch (Exception ignored) {
                 }
