@@ -1,4 +1,4 @@
-package com.mniprince.quiz;
+package com.monapp.quiz;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".SplashActivity"
+            android:name="com.monapp.quiz.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".CategoryActivity"
+            android:name="com.monapp.quiz.CategoryActivity"
             android:exported="false">
 
             <meta-data
@@ -32,7 +32,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.monapp.quiz.MainActivity"
             android:exported="false">
 
         </activity>

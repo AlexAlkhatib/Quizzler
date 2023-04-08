@@ -1,4 +1,4 @@
-package com.mniprince.quiz;
+package com.monapp.quiz;
 
 import org.junit.Test;
 

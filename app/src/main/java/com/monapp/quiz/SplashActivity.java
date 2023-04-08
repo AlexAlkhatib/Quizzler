@@ -1,4 +1,4 @@
-package com.mniprince.quiz;
+package com.monapp.quiz;
 
 import android.app.Activity;
 import android.os.Build;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.mniprince.quiz.R;
 
 /*
 Ce code définit la classe SplashActivity qui étend la classe Activity et affiche un écran de démarrage avec une animation de barre de progression pendant que l'application se charge.

@@ -1,4 +1,4 @@
-package com.mniprince.quiz;
+package com.monapp.quiz;
 
 import android.content.Context;
 import android.content.Intent;

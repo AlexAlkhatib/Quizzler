@@ -1,4 +1,4 @@
-package com.mniprince.quiz;
+package com.monapp.quiz;
 
 import java.util.List;
 import retrofit2.Call;

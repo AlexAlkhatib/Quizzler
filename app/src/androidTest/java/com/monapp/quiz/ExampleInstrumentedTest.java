@@ -1,4 +1,4 @@
-package com.mniprince.quiz;
+package com.monapp.quiz;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;

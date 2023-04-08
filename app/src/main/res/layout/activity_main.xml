@@ -9,7 +9,7 @@
     android:layout_margin="8dp"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context="com.monapp.quiz.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"

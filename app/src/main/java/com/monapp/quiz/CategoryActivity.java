@@ -1,6 +1,5 @@
-package com.mniprince.quiz;
+package com.monapp.quiz;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -24,8 +23,9 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mniprince.quiz.R;
 
 public class CategoryActivity extends AppCompatActivity {
     BroadcastReceiver br;
