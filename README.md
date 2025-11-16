@@ -2,15 +2,12 @@
 
 **Quizzler** est une application Android de quiz que j'ai développée dans un cadre **personnel**, dans le but d’enrichir ma culture générale via un jeu interactif. Elle s’appuie sur l’API **Open Trivia DB** pour générer dynamiquement des questions, et offre une expérience utilisateur simple et fluide.
 
----
 ## 🚀 Fonctionnalités
 
 - Sélection d’une **catégorie de questions** (ex : science, histoire…)  
 - Affichage de questions avec **choix multiples**, et validation de la réponse  
 - Calcul et affichage du **score final** à la fin du quiz
----
 
----
 ## 🧱 Architecture & Stack technique
 
 - **Langage** : Java  
