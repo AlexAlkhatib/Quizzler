@@ -1,4 +1,4 @@
-# Quizzler
+# ❓ Quizzler
 
 **Quizzler** est une application Android de quiz que j'ai développée dans un cadre **personnel**, dans le but d’enrichir ma culture générale via un jeu interactif. Elle s’appuie sur l’API **Open Trivia DB** pour générer dynamiquement des questions, et offre une expérience utilisateur simple et fluide.
 
